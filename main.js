@@ -32,11 +32,11 @@ const financialAdvisor = Object.create(null, {
     },
     worth: {
         value: {
-            method: function() {
+            figureWorth: function() {
                 let boughtTotal = []
                 let soldTotal = []
                 for (let key in financialAdvisor.portfolio) {
-                    if (financialAdvisor.portfolio[key].purch === true) {
+                    if (financialAdvisor.portfolio[key].purch) {
                         let stocksBought =
                         (financialAdvisor.portfolio[key].cost) * (financialAdvisor.portfolio[key].amount)
                         boughtTotal.push(stocksBought)
@@ -104,27 +104,8 @@ financialAdvisor.purchase.buy('GOOG', 30, 30)
 financialAdvisor.sell.sell('NVDA', 30, 10)
 financialAdvisor.sell.sell('TXN', 50, 5)
 financialAdvisor.purchase.buy('MA', 70, 9)
+console.log(financialAdvisor.worth.figureWorth());
 
-console.log(financialAdvisor.worth.method());
-
-
-// let boughtTotal = []
-// let soldTotal = []
-
-// for (let key in financialAdvisor.portfolio) {
-//     if (financialAdvisor.portfolio[key].purch === true) {
-//         let stocksBought =
-//         (financialAdvisor.portfolio[key].cost) * (financialAdvisor.portfolio[key].amount)
-//         boughtTotal.push(stocksBought)
-        
-//     } else {
-//         stocksSold =
-//         (financialAdvisor.portfolio[key].cost) * (financialAdvisor.portfolio[key].amount)
-//         soldTotal.push(stocksSold)
-//     }
-// }
-
-// const netWorth = boughtTotal.reduce((currntTotal, next) => currntTotal + next) - soldTotal.reduce((currntTotal, next) => currntTotal + next)
 
 
 
