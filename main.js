@@ -104,6 +104,7 @@ financialAdvisor.purchase.buy('GOOG', 30, 30)
 financialAdvisor.sell.sell('NVDA', 30, 10)
 financialAdvisor.sell.sell('TXN', 50, 5)
 financialAdvisor.purchase.buy('MA', 70, 9)
+financialAdvisor.sell.sell('THO', 20, 40)
 console.log(financialAdvisor.worth.figureWorth());
 
 
