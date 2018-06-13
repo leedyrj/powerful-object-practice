@@ -55,19 +55,23 @@ const financialAdvisor = Object.create(null, {
     },
     purchase: {
         value: {
-            buy: function(symbol, quantity, price, purch) {
+            buy: function(symbol, quantity, price) {
             let bought = Object.create(null, {
                 symbol: {
-                    value: symbol
+                    value: symbol,
+                    enumerable: true                    
                 },
                 amount: {
-                    value: quantity
+                    value: quantity,
+                    enumerable: true                    
                 },
                 cost: {
-                    value: price
+                    value: price,
+                    enumerable: true                    
                 },
                 purch: {
-                    value: true
+                    value: true,
+                    enumerable: true                    
                 }
             })            
             financialAdvisor.portfolio.push(bought)
@@ -77,19 +81,23 @@ const financialAdvisor = Object.create(null, {
 },
 sell: {
     value: {
-        sell: function(symbol, quantity, price, purch) {
+        sell: function(symbol, quantity, price) {
         let sold = Object.create(null, {
             symbol: {
-                value: symbol
+                value: symbol,
+                enumerable: true                    
             },
             amount: {
-                value: quantity
+                value: quantity,
+                enumerable: true                    
             },
             cost: {
-                value: price
+                value: price,
+                enumerable: true                    
             },
             purch: {
-                value: false
+                value: false,
+                enumerable: true                    
             }
         })        
         financialAdvisor.portfolio.push(sold)
@@ -107,10 +115,38 @@ financialAdvisor.purchase.buy('MA', 70, 9)
 financialAdvisor.sell.sell('THO', 20, 40)
 console.log(financialAdvisor.worth.figureWorth());
 
+// Use document.createElement to build & display an HTML component to display the advisor's name, company, and specialty.
 
 
+for (let key in financialAdvisor) {
+    let container = document.querySelector('#div')
+    let para = document.createElement('p')
+    para.textContent = `${key}: ${financialAdvisor[key]}`
+    container.appendChild(para)
+}
 
+//Iterate over the advisor's portfolio and use document.createDocumentFragment along with document.createElement to display some HTML components representing each stock owned by the advisor.
 
+for (let i=0; i<financialAdvisor.portfolio.length; i++) {
+    console.log('finadv.port', financialAdvisor.portfolio[i]);
+    for (let key in financialAdvisor.portfolio[i]) {
+        let docFrag = document.createDocumentFragment()
+        let container = document.querySelector('#div')
+        let para = document.createElement('p')
+        para.textContent = financialAdvisor.portfolio[i][key]
+        container.appendChild(para)
+        }
+}   
+
+// console.log(financialAdvisor.portfolio)
+// financialAdvisor.portfolio.forEach(element => {
+//     let docFrag = document.createDocumentFragment()
+//     let container = document.querySelector('#div')
+//     let para = document.createElement('p')
+//     para.textContent = element
+//     container.appendChild(para)
+//     docFrag.appendChild(container)
+// });
 
 
 
